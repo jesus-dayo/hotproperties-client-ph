@@ -1,0 +1,149 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Property Details
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field hintLabel="Max 100 characters">
+    <input matInput #input maxlength="100" [(ngModel)]="data.property.propertyName" placeholder="Title of the Property">
+    <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Select Type" [(ngModel)]="data.property.propertyType">
+      <mat-option *ngFor="let ptype of data.propertyTypes" [value]="ptype">
+      		{{ptype.name}}
+    	</mat-option>
+    </mat-select>
+    <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+  </mat-form-field>
+  <div class="example-container">
+  <mat-radio-group [(ngModel)]="data.property.category" (change)="onChangeCategory($event)">
+        <mat-radio-button value="1">Featured</mat-radio-button>
+        <mat-radio-button value="2">New Development</mat-radio-button>
+        <mat-radio-button value="3">Featured under Development</mat-radio-button>
+   </mat-radio-group>
+   <mat-form-field style="margin-top:5px;margin-bottom:5px;" *ngIf="data.property.category == 3">
+   <mat-select placeholder="Select Parent Development" [(ngModel)]="data.property.parentId" #t (change)="onSelectDevProperty(t.value)">
+      <mat-option *ngFor="let dev of propertyDevList" [value]="dev.propertyId">
+      		{{dev.propertyName}}
+    	</mat-option>
+    </mat-select>
+    </mat-form-field>
+    </div>
+  <div class="example-container">
+  <mat-form-field hintLabel="Max 2000 characters">
+    <textarea matInput #input matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="20" placeholder="Enter description here" [(ngModel)]="data.property.description"></textarea>
+    <mat-hint align="end">{{input.value?.length || 0}}/2000</mat-hint>
+  </mat-form-field>
+  </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngIf="data.property.category != 2" (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Other Details
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="example-container">
+    <mat-form-field hintLabel="Max 60 characters">
+    <input matInput #input maxlength="60" [(ngModel)]="data.property.title" placeholder="Title displayed in google">
+    <mat-hint align="end">{{input.value?.length || 0}}/60</mat-hint>
+  </mat-form-field>
+  </div>
+  <div class="example-container">
+  <mat-form-field hintLabel="Max 155 characters">
+  <input matInput #input maxlength="155" [(ngModel)]="data.property.metadescription" placeholder="description displayed in google">
+  <mat-hint align="end">{{input.value?.length || 0}}/155</mat-hint>
+</mat-form-field>
+</div>
+   <div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Price" type="number"  class="example-right-align" [(ngModel)]="data.property.price">
+    <span matPrefix>&#8369;&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Max Price" type="number"  class="example-right-align" [(ngModel)]="data.property.maxPrice">
+    <span matPrefix>&#8369;&nbsp;</span>
+  </mat-form-field>
+  </div>
+  <div class="property_counts">
+    <input matInput placeholder="Rooms" type="number" min="0" max="9" [(ngModel)]="data.property.rooms">
+    <input matInput placeholder="Max Rooms" type="number" min="0" max="9" [(ngModel)]="data.property.maxRooms">
+    <input matInput placeholder="Bath" type="number" min="0" max="9" [(ngModel)]="data.property.bath">
+    <input matInput placeholder="SQM" type="number" min="0" max="100000" [(ngModel)]="data.property.sqm">
+    <input matInput placeholder="Max SQM" type="number" min="0" max="100000" [(ngModel)]="data.property.maxSQM">
+    <mat-checkbox [(ngModel)]="data.property.swimming">Swimming Pool</mat-checkbox>
+    <mat-checkbox [(ngModel)]="data.property.gym">Gym</mat-checkbox>
+    <mat-checkbox [(ngModel)]="data.property.garage">Garage</mat-checkbox>
+    <mat-checkbox [(ngModel)]="data.property.court">Basketball Court</mat-checkbox>
+  </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Location
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="example-container">
+  <mat-form-field>
+    <mat-select [compareWith]="compareFn" [(value)]="data.property.city" placeholder="Select City" [(ngModel)]="data.property.city">
+            <mat-option *ngFor="let city of data.cities" [value]="city">
+      		{{city.citymunDesc}}
+    	</mat-option>
+    </mat-select>
+    <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+  </mat-form-field>
+	<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="13">
+		<agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+		(dragEnd)="onChoseLocation($event)"></agm-marker>
+	</agm-map>
+  </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Images
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+   <image-upload [style]="customStyle" [maxFileSize]="200000" [max]="1" [extensions]="['jpeg','png','jpg']" (removed)="onRemovedProfile($event)"
+   (uploadFinished)="onUploadProfileFinished($event)" buttonCaption="Add Profile Image (480px*320px)"
+  dropBoxMessage="Drag and Drop here"></image-upload>
+   <image-upload [style]="customStyle" [maxFileSize]="300000" [max]="6" [extensions]="['jpeg','png','jpg']" (removed)="onRemoved($event)"
+   (uploadFinished)="onUploadFinished($event)" buttonCaption="Additional images (520px*400px)"
+  dropBoxMessage="Drag and Drop here"></image-upload>
+  <mat-form-field *ngIf="data.property.category == 2">
+    <input matInput #input maxlength="200" placeholder="youtube embeded URL" [(ngModel)]="data.property.youtubelink">
+  </mat-form-field>
+  <!--
+<input type="file" (change)="fileChangeEvent($event)" />
+
+<image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 3"
+    [resizeToWidth]="128"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+
+<img [src]="croppedImage" />-->
+
+  </mat-expansion-panel>
+  <div class="button-row" style="margin-top:10px;padding-right:10px;">
+  	<button mat-raised-button color="primary" (click)="onSave()">Save</button>
+  	<button mat-raised-button color="default" (click)="onNoClick()">Cancel</button>
+  </div>
+</mat-accordion>

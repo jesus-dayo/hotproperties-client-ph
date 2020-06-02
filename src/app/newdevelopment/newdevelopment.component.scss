@@ -1,0 +1,436 @@
+.example-card {
+  max-width: 1200px;
+  margin-top:20px;
+}
+
+/deep/ .displayinline{
+      display: inline !important;
+      width:90% !important;
+      margin: 2px 2px 2px 2px !important;
+}
+
+/deep/ .cardhover6:hover{
+  opacity: 0.6;
+}
+
+/deep/ .cardhover8:hover{
+  opacity: 0.8;
+}
+
+/deep/ .spacebetween {
+     display: flex;
+     justify-content: space-between;
+}
+
+/deep/ .room {
+    background-color: #360a3db0 !important;
+    color: #fff !important;
+}
+
+/deep/ .bath {
+    background-color: #0a3d3db0 !important;
+    color: #fff !important;
+}
+
+/deep/ .garage {
+    background-color: #bb0707b0 !important;
+    color: #fff !important;
+}
+
+/deep/ .swimming {
+    background-color: #1c07bbb0 !important;
+    color: #fff !important;
+}
+
+/deep/ .gym {
+    background-color: #000000b0 !important;
+    color: #fff !important;
+}
+
+/deep/ .court {
+    background-color: #4e411db0 !important;
+    color: #fff !important;
+}
+
+/deep/ .sqm {
+    background-color: #145211b0 !important;
+    color: #fff !important;
+}
+
+@media (min-width: 300px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 305px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 290px;
+  }
+  .cardFooterHeight{
+    height: 50px;
+    font-size: 8px;
+  }
+  .propertyDescription{
+    font-size: 11px;
+    color: #212529;
+  }
+  .propname{
+    font-size:5vw;
+  }
+  .locationcity{
+    font-size:5vw;
+  }
+ }
+@media (min-width: 576px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 305px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 290px;
+  }
+  .cardFooterHeight{
+    height: 40px;
+    font-size: 9px;
+  }
+  .propertyDescription{
+    font-size: 12px;
+    color: #212529;
+  }
+  .propname{
+    font-size:4vw;
+  }
+  .locationcity{
+    font-size:4vw;
+  }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 305px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 100%;
+  }
+  .cardFooterHeight{
+    height: 45px;
+    font-size: 9px;
+  }
+  .propertyDescription{
+    font-size: 13px;
+    color: #212529;
+  }
+  .propname{
+    font-size:3vw;
+  }
+  .locationcity{
+    font-size:3vw;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 355px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 100%;
+  }
+  .cardFooterHeight{
+    height: 50px;
+    font-size: 10px;
+  }
+  .propertyDescription{
+    font-size: 14px;
+    color: #212529;
+  }
+  .propname{
+    font-size:3vw;
+  }
+  .locationcity{
+    font-size:3vw;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 405px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 100%;
+  }
+  .cardFooterHeight{
+    height: 55px;
+    font-size: 11px;
+  }
+  .propertyDescription{
+    font-size: 16px;
+    color: #212529;
+  }
+  .propname{
+    font-size:2vw;
+  }
+  .locationcity{
+    font-size:2vw;
+  }
+}
+
+mat-drawer-content {
+	background-color: #e1e9f800;
+}
+
+.mat-card-content{
+  padding-bottom: 3px;
+}
+
+#toggleInquiry{
+	position: fixed;
+    right: 0px;
+    top: 250px;
+    z-index: 2;
+}
+
+/deep/ .card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+
+/deep/ .card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: .25rem;
+    border: medium none;
+    box-shadow: 0 0 11px #daebff;
+    margin-bottom: 18px;
+}
+
+/deep/ img {
+    transform-style: preserve-3d;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.card-list .badge-success {
+    left: 20px;
+    padding: 7px 10px;
+    position: absolute;
+    top: 20px;
+    z-index: 9;
+}
+
+.card-list .badge-info {
+    right: 20px;
+    padding: 7px 10px;
+    position: absolute;
+    top: 20px;
+    z-index: 9;
+}
+
+.card-list .card-body .card-title {
+    font-size: 15px;
+    height:30px;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #34495e;
+}
+
+.card-list .card-body .card-subtitle {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.text-success {
+    color: #64ddba !important;
+}
+
+.card-footer {
+    background: #fff none repeat scroll 0 0;
+    border-color: #eeeeee;
+    padding: 0 0 0 0;
+    font-size: 12px;
+}
+
+.card-list .card-footer span {
+    margin: 0 16px 0 0;
+}
+
+.badge {
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+
+
+.card-transparent{
+  background: none;
+}
+
+/deep/ .green-icon {
+    color: green;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+/deep/ .green-icon svg {
+    fill: green;
+}
+
+/deep/ .mat-icon.md-18 {
+font-size: 18px !important;
+height: 18px !important;
+width: 18px !important;
+}
+/deep/ .mat-icon.md-24 {
+font-size: 24px !important;
+height: 24px !important;
+width: 24px !important;
+}
+/deep/ .mat-icon.md-36 {
+font-size: 36px !important;
+height: 36px !important;
+width: 36px !important;
+}
+/deep/ .mat-icon.md-48 {
+font-size: 48px !important;
+height: 48px !important;
+width: 48px !important;
+}
+
+/deep/ .material-icons.md-18 {
+font-size: 18px !important;
+height: 18px !important;
+width: 18px !important;
+}
+/deep/ .material-icons.md-24 {
+font-size: 24px !important;
+height: 24px !important;
+width: 24px !important;
+}
+/deep/ .material-icons.md-36 {
+font-size: 36px !important;
+height: 36px !important;
+width: 36px !important;
+}
+/deep/ .material-icons.md-48 {
+font-size: 48px !important;
+height: 48px !important;
+width: 48px !important;
+}
+
+/deep/ .mat-input-flex{
+  background: white;
+}
+
+/deep/ .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/deep/ .mat-card-header-text {
+    width: 100%;
+    text-align: center;
+}
+
+/deep/ .app-spacer {
+  flex: 1 1 auto;
+}
+
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+}
+
+/deep/ .standardIcon {
+    &mat-icon {
+      @include md-icon-size(32px);
+    }
+}
+
+@media (min-width: 576px) {
+  .container-fluid{
+    min-height: 500px;
+  }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .container-fluid{
+    min-height: 500px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .container-fluid{
+    min-height: 500px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .container-fluid{
+    min-height: 500px;
+  }
+}

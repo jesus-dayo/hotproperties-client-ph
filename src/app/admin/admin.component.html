@@ -1,0 +1,65 @@
+<div class="container-fluid">
+<mat-card style="margin-top:10px;margin-bottom:10px;"> <mat-card-content>
+  <button mat-stroked-button color="primary" (click)="addProperty()">Add Property</button>
+  <button mat-stroked-button class="pull-right" color="warn" (click)="logout()">Logout</button>
+</mat-card-content></mat-card>
+
+<mat-card> <mat-card-content>
+<div class="container mat-elevation-z8">
+		<mat-table #table [dataSource]="dataSource"> <!-- Position Column -->
+		<ng-container matColumnDef="image"><mat-header-cell
+			*matHeaderCellDef> Image </mat-header-cell> <mat-cell
+			*matCellDef="let element">
+			<img *ngIf="element?.profileImage" height="80px" width="80px" [src]="element?.profileImage.image" [alt]="element?.profileImage.description" />
+      <img *ngIf="!element?.profileImage" height="80px" width="80px" src="https://s3-ap-southeast-1.amazonaws.com/hotprop-bucket/static/default/64px-No_image_available.svg.png" alt="" /> </mat-cell> </ng-container> <!-- Name Column -->
+  	<ng-container matColumnDef="name"> <mat-header-cell
+			*matHeaderCellDef> Name </mat-header-cell> <mat-cell
+			*matCellDef="let element"> {{element.propertyName}} </mat-cell> </ng-container> <!-- Weight Column -->
+		<ng-container matColumnDef="price"> <mat-header-cell
+			*matHeaderCellDef> Price </mat-header-cell> <mat-cell
+			*matCellDef="let element"> {{element.price}} </mat-cell> </ng-container>
+			<ng-container
+			matColumnDef="rooms"> <mat-header-cell
+			*matHeaderCellDef> Rooms </mat-header-cell> <mat-cell
+			*matCellDef="let element"> {{element.rooms}} </mat-cell> </ng-container>
+			 <ng-container
+			matColumnDef="type"> <mat-header-cell
+			*matHeaderCellDef> Type </mat-header-cell> <mat-cell
+			*matCellDef="let element"> {{element.propertyType.name}} </mat-cell> </ng-container>
+			 <ng-container matColumnDef="category"> <mat-header-cell
+			*matHeaderCellDef> Category </mat-header-cell> <mat-cell
+			*matCellDef="let element"> {{element.categoryName}} </mat-cell> </ng-container>
+			<ng-container
+			matColumnDef="location"> <mat-header-cell
+			*matHeaderCellDef> Location </mat-header-cell> <mat-cell
+			*matCellDef="let element"> {{element.city.citymunDesc}} </mat-cell> </ng-container>
+			<ng-container
+			matColumnDef="action"> <mat-header-cell
+			*matHeaderCellDef> Action </mat-header-cell> <mat-cell
+			*matCellDef="let element">
+      <a (click)="updateProperty(element.propertyId)">
+      <mat-icon  svgIcon="build"></mat-icon>
+    </a>
+			<mat-icon mwlConfirmationPopover
+      [popoverTitle]="popoverTitleCancel"
+      [popoverMessage]="popoverMessageCancel"
+      placement="left"
+      (confirm)="markAsCancelled(element.propertyId)"
+      (cancel)="cancelClicked = true" svgIcon="clear"></mat-icon>
+			<mat-icon mwlConfirmationPopover
+      [popoverTitle]="popoverTitleSold"
+      [popoverMessage]="popoverMessageSold"
+      placement="left"
+      (confirm)="markAsSold(element.propertyId)"
+      (cancel)="cancelClicked = true" svgIcon="monetize"></mat-icon>
+    </mat-cell> </ng-container>
+			<mat-header-row
+			*matHeaderRowDef="displayedColumns"></mat-header-row> <mat-row
+			*matRowDef="let row; columns: displayedColumns;"></mat-row> </mat-table>
+
+		<mat-paginator #paginator [pageSize]="5"
+			[pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+		</mat-paginator>
+	</div>
+</mat-card-content> </mat-card>
+</div>

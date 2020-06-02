@@ -1,0 +1,174 @@
+<div class="container mb-2">
+<div class="row">
+<mat-card class="col-md-12 mat-elevation-z mt-5" style="background-color:#0000ff0a;">
+  <!--{{prop?.propertyName}} -
+  {{prop?.city.citymunDesc}}<strong
+  style="color: blue;">{{prop?.price | currency:'&#8369;'}}</strong>-->
+  <div class="spacebetween">
+  <h1 class="propname">{{prop?.propertyName}}</h1>
+  <!--<h2 class="mat-h2" style="color: blue;">{{prop?.propertyName}}</h2>-->
+  <h2 class="locationcity">{{prop?.city.citymunDesc}}</h2>
+</div>
+    <div class="row">
+        <mat-card class="col-md-7 mat-elevation-z">
+          <ngx-gallery *ngIf="prop" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </mat-card>
+        <mat-card class="col-md-5 mat-elevation-z text-center">
+            <div>
+              <div *ngIf="prop?.youtubelink">
+                <div [innerHtml]="iframe_html"></div>
+                 <!-- <iframe width="auto" height="auto" [src]="prop?.youtubelink | safe"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+              </div>
+            <agm-map  *ngIf="prop && !(prop?.youtubelink)" [latitude]="prop?.latitude" [longitude]="prop?.longitude" [zoom]="13">
+          		<agm-marker [latitude]="prop?.latitude" [longitude]="prop?.longitude"></agm-marker>
+          	</agm-map>
+             </div>
+        </mat-card>
+    </div>
+    <div class="row" style="margin-top:5px;">
+      <h2 class="headline col-md-5" *ngIf="prop && !prop.maxPrice">{{prop?.price | currency:'&#8369;'}}</h2>
+      <h2 class="headline col-md-5" *ngIf="prop && prop.maxPrice">{{prop?.price | currency:'&#8369;'}}&nbsp;-&nbsp;{{prop?.maxPrice | currency:'&#8369;'}} </h2>
+      <mat-chip-list class="col-md-7">
+    <mat-chip class="room" matTooltip="rooms">
+    <sup *ngIf="prop && !prop.maxRooms">{{prop?.rooms}}</sup>
+    <sup *ngIf="prop && prop.maxRooms">{{prop?.rooms}}&nbsp;-&nbsp;{{prop?.maxRooms}}</sup>
+    <mat-icon placement="left" svgIcon="room"></mat-icon>
+  </mat-chip>
+  <mat-chip class="bath" matTooltip="bathrooms">
+    <sup>{{prop?.bath}}</sup>
+    <mat-icon placement="left" svgIcon="bath"></mat-icon>
+  </mat-chip>
+  <mat-chip class="garage" matTooltip="garage" *ngIf="prop?.garage">
+    <sup>&#x2713;</sup>
+    <mat-icon placement="left" svgIcon="garage"></mat-icon>
+  </mat-chip>
+  <mat-chip class="swimming" matTooltip="swimming pool" *ngIf="prop?.swimming">
+    <sup>&#x2713;</sup>
+    <mat-icon placement="left"  svgIcon="pool"></mat-icon>
+  </mat-chip>
+  <mat-chip class="gym" matTooltip="gym" *ngIf="prop?.gym">
+    <sup>&#x2713;</sup>
+    <mat-icon placement="left" svgIcon="gym"></mat-icon>
+  </mat-chip>
+  <mat-chip class="court" matTooltip="basketball court" *ngIf="prop?.court">
+    <sup>&#x2713;</sup>
+    <mat-icon placement="left" svgIcon="court"></mat-icon>
+  </mat-chip>
+  <mat-chip class="sqm" matTooltip="floor area" *ngIf="prop?.sqm">
+    <span *ngIf="prop && !prop.maxSQM">{{prop?.sqm}}</span>
+    <span *ngIf="prop && prop.maxSQM">{{prop?.sqm}}&nbsp;-&nbsp;{{prop?.maxSQM}}</span> <sup>SQM</sup>
+  </mat-chip>
+</mat-chip-list>
+  </div>
+</mat-card>
+</div>
+<div class="row">
+    <mat-card class="col-md-8 mat-elevation-z mt-2" style="background-color:#fff;">
+      <div [innerHTML]="prop?.description" class="description propertyDescription"></div>
+        <!--<p class="description">{{prop?.description}}</p>-->
+    </mat-card>
+    <mat-card class="col-md-4 mat-elevation-z mt-2" style="background-color:#0000ff0a;">
+      <form [formGroup]="contactForm" class="pl-2 pt-2 pr-2 pb-2" style="background:#a8abff;color: white;">
+        <p class="h5 mt-1">Ask Your Broker - <i class="fa fa-phone prefix grey-text" style="font-size: 20px;color: orange;"></i>
+        	<span style="color: #fff;font-weight: 600;font-size: 16px;text-shadow: 0 0 15px #999;">+63 9158350512</span></p>
+
+      <div class="md-form">
+      	<i class="fa fa-user prefix grey-text" style="font-size: 20px;"></i>
+      	<input type="text" placeholder="Your name" id="contactFormName" [(ngModel)]="inquiry.name"
+        formControlName="contactFormName" class="form-control displayinline" mdbInputDirective>
+      </div>
+
+      <div class="md-form">
+      	<i class="fa fa-envelope prefix grey-text" style="font-size: 16px;"></i>
+      	<input type="email" placeholder="Your email" [(ngModel)]="inquiry.email"
+        id="contactFormEmail" formControlName="contactFormEmail" class="form-control displayinline" mdbInputDirective>
+      </div>
+
+      <div class="md-form">
+      	<i class="fa fa-phone prefix grey-text" style="font-size: 20px;"></i>
+      	<input type="text" placeholder="Phone Number" [(ngModel)]="inquiry.phone"
+        id="contactFormSubject" formControlName="contactFormSubject" class="form-control displayinline" mdbInputDirective>
+      </div>
+
+      <div class="md-form">
+      	<i class="fa fa-pencil prefix grey-text" style="font-size: 20px;"></i>
+      	<textarea type="text" placeholder="Message broker and schedule viewing" [(ngModel)]="inquiry.message"
+        id="contactFormMessage" formControlName="contactFormMessage" class="md-textarea displayinline" style="height: 100px"
+      	mdbInputDirective></textarea>
+      </div>
+
+      <div class="text-center">
+        <mat-progress-spinner
+      	style="margin: 10px auto;"
+      	mode="indeterminate"
+      	diameter="50"
+      	[color]="warn"
+      	*ngIf="inquiryProgress"></mat-progress-spinner>
+      	<button *ngIf="!inquiryProgress" class="btn btn-success waves-light mb-1" (click)="inquire()" mdbWavesEffect>Send
+      		<i class="fa fa-paper-plane-o ml-1"></i>
+      	</button>
+      </div>
+      </form>
+      <div class="mt-2 text-center" *ngIf="prop?.youtubelink">
+        <agm-map  *ngIf="prop" [latitude]="prop?.latitude" [longitude]="prop?.longitude" [zoom]="13">
+          <agm-marker [latitude]="prop?.latitude" [longitude]="prop?.longitude"></agm-marker>
+        </agm-map>
+      </div>
+    </mat-card>
+</div>
+<div *ngIf="similarProperties && similarProperties.length > 0" class="row">
+    <mat-card class="col-md-12 mat-elevation-z" style="background-color:#1e36b18c;margin-top:10px;">
+      <mat-card-title class="text-center">Similar Properties</mat-card-title>
+      <ngx-carousel class="banner" [inputs]="carouselTileOne">
+        <ngx-tile NgxCarouselItem *ngFor="let prop of similarProperties"
+           style="cursor:pointer;">
+           <a routerLink="/for-sale/{{prop?.propertyType.name | slugify}}/{{prop?.city.citymunDesc | slugify}}/{{prop?.propertyName | slugify}}/{{prop?.propertyId}}">
+           <div class="card card-list cardhover6" >
+                 <span class="badge badge-success">For Sale</span>
+                 <span class="badge badge-info">{{prop.city.citymunDesc}}</span>
+                 <img  class="card-img-top" *ngIf="prop.profileImage" style="width: 100%;height: 220px;"  [src]="prop?.profileImage.image" [alt]="prop.propertyName">
+                 <div class="card-body" style="height:105px;">
+                   <h4 class="text-success mb-0 mt-0" style="font-size: 18px;">
+                   {{(prop.price | currency:'&#8369;') || "Ask Broker for Price"}}</h4>
+                   <div class="card-title glow" style="color: #6c757d;height:20px;">{{prop.propertyName}}</div>
+
+                    <!--<h5 class="card-title glow" style="color: #6c757d;">{{prop.propertyName}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><mat-icon matPrefix>location_on</mat-icon> {{prop.city.citymunDesc}}</h6>
+                    <h4 class="text-success mb-0 mt-0" style="font-size: 18px;margin-top:30px !important;">
+                    {{prop.price | currency:'&#8369;'}}</h4>-->
+                 </div>
+                 <div class="card-footer cardFooterHeight text-center" style="color:#aaaaaa;">
+                    <span *ngIf="prop.rooms > 0"><i class="mdi mdi-sofa"></i> Beds : <strong>{{prop.rooms}}</strong></span>
+                    <span *ngIf="prop.bath > 0"><i class="mdi mdi-scale-bathroom"></i> Baths : <strong>{{prop.bath}}</strong></span>
+                    <span *ngIf="prop.sqm > 0"><i class="mdi mdi-move-resize-variant"></i> Area : <strong>{{prop.sqm}} sq</strong></span>
+                 </div>
+           </div>
+         </a>
+        </ngx-tile>
+        <button NgxCarouselPrev class="leftRs" [hidden]="true">&lt;</button>
+        <button NgxCarouselNext class="rightRs" [hidden]="true">&gt;</button>
+    </ngx-carousel>
+    </mat-card>
+</div>
+</div>
+<footer class="footer" style="background-color: #0e0f13 !important;height:50px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 h-100 text-center text-lg-left my-auto">
+        <p class="text-center text-white medium mb-1 mb-lg-0 mt-2">&copy; Streamrock Realty Corporation 2018. All Rights Reserved.</p>
+		<p class="text-center">
+			<a href="#" (click)="openLink('https://www.facebook.com/PhilippineHotProperties')" >
+				<i class="fa fa-facebook-square" style="font-size:36px; color:white;"></i>
+			</a>
+			<a href="#" (click)="openLink('https://twitter.com/HotPropertiesP1')" >
+				<i class="fa fa-twitter-square" style="font-size:36px; color:white;"></i>
+			</a>
+			<a href="#" (click)="openLink('https://www.instagram.com/philippinehotproperties')" >
+				<i class="fa fa-instagram" style="font-size:36px; color:white;"></i>
+			</a>
+		</p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,22 @@
+@import "style-variables";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+    transform: none !important;
+}
+
+.description{
+  white-space: pre-wrap;
+}
+
+img {
+  image-rendering: auto !important;
+  image-rendering: crisp-edges !important;
+  image-rendering: pixelated !important;
+}
+
+body{
+  background-color: #ffffff;
+}

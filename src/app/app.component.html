@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+	<meta name="google-site-verification" content="13KCsxK0PoskS2oDVduUitKYn7pbrQlDiJuL2ASZo18" />
+  <meta name="fragment" content="!">
+    <!-- Bootstrap core CSS -->
+<!--    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="assets/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+	 <link href="assets/css/glyphicons.css" rel="stylesheet">
+    <link href="assets/css/landing-page.css" rel="stylesheet">
+	  <link href="assets/css/app.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	  <script id="twitter-wjs" src="http://platform.twitter.com/widgets.js"></script>
+	  <script type="text/javascript" charset="utf-8" async="" src="https://platform.twitter.com/js/timeline.25e3f797ea5047ab5a8d06fd6ee7f701.js"></script>
+	  -->
+  </head>
+
+  <body>
+    <header>
+  <nav class="navbar navbar-toggleable-md">
+  <button class="navbar-toggler navbar-toggler-right mt-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <mat-icon matPrefix>horizontal_split</mat-icon>
+  </button>
+  <a class="navbar-brand color-white" routerLink='home'>
+    <img id="logo" width="70" height="70" class="d-inline-block" alt="hotpropertyphlogo" src="assets\img\logo\iconv2-70x70.png"/>
+    <strong>Hot</strong>PropertiesPH
+  </a>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle color-white" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Properties
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" (click)="searchHouseAndLot()">House and Lot</a>
+              <a class="dropdown-item" (click)="searchCondominium()">Condominium</a>
+              <a class="dropdown-item" (click)="searchOfficeSpace()">Office Space</a>
+            </div>
+          </li>-->
+              <li class="nav-item"><a *ngIf="displayHome" class="nav-link color-red navbar-text" routerLink="home" style="cursor:pointer;">Home</a></li>
+            <li class="nav-item"><a class="nav-link color-red navbar-text" routerLink="for-sale/house-and-lot/ALL" style="cursor:pointer;">House and Lot</a></li>
+            <li class="nav-item"><a class="nav-link color-red navbar-text" routerLink="for-sale/condo/ALL" style="cursor:pointer;">Condominium</a></li>
+            <li class="nav-item"><a class="nav-link color-red navbar-text" routerLink="for-sale/office-space/ALL" style="cursor:pointer;">Office Space</a></li>
+        </ul>
+    </div>
+</nav>
+      <!--<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span><a class="navbar-brand" href="#" routerLink='/home'>
+			<img src="https://dyst1c8v98nm2.cloudfront.net/static/default/logo.png"/><span class="navbar-text" style="color:#e1e8ed;">HotPropertiesPH</span></a></span>
+      <span class="app-spacer"></span>
+      <button mat-button [matMenuTriggerFor]="menu">Properties</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="searchHouseAndLot()">House and Lot</button>
+  <button mat-menu-item (click)="searchCondominium()">Condominium</button>
+  <button mat-menu-item (click)="searchOfficeSpace()">Office Space</button>
+</mat-menu>
+  <button mat-button>Inquire Now!</button>
+    </mat-toolbar-row>
+  </mat-toolbar>-->
+</header>
+    <router-outlet></router-outlet>
+  </body>
+
+</html>

@@ -1,0 +1,171 @@
+<div class="mb-3 mt-3 ml-3">
+<button class="backToAdmin" (click)="backToAdmin()" mat-raised-button>Back to Admin</button>
+</div>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Fill out details</ng-template>
+      <div class="stepperdiv">
+      <div class="example-container">
+      <mat-form-field style="width: 100%;" hintLabel="Max 100 characters">
+    <input matInput #input maxlength="100" [(ngModel)]="property.propertyName" placeholder="Title of the Property">
+    <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
+  </mat-form-field>
+</div>
+<div class="example-container">
+  <mat-form-field style="width: 100%;">
+    <mat-select placeholder="Select Type" [(ngModel)]="property.propertyType">
+      <mat-option *ngFor="let ptype of propertyTypes" [value]="ptype">
+      		{{ptype.name}}
+    	</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+  <div class="example-container">
+  <mat-radio-group [(ngModel)]="property.category" (change)="onChangeCategory($event)">
+        <mat-radio-button value="1">Featured</mat-radio-button>
+        <mat-radio-button value="2">New Development</mat-radio-button>
+        <mat-radio-button value="3">Featured under Development</mat-radio-button>
+   </mat-radio-group>
+    </div>
+    <div class="example-container">
+  <mat-form-field style="width: 100%;" *ngIf="property.category == 3">
+  <mat-select placeholder="Select Parent Development" [(ngModel)]="property.parentId" #t (change)="onSelectDevProperty(t.value)">
+     <mat-option *ngFor="let dev of propertyDevList" [value]="dev.propertyId">
+         {{dev.propertyName}}
+     </mat-option>
+   </mat-select>
+   </mat-form-field>
+   </div>
+  <div class="example-container">
+    <app-ngx-editor [placeholder]="'Enter description here'"
+     height="400px" minHeight="100px"
+     [spellcheck]="true" [(ngModel)]="property.description"></app-ngx-editor>
+  <!--<mat-form-field hintLabel="Max 2000 characters">
+    <textarea matInput #input matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="20" placeholder="Enter description here" [(ngModel)]="property.description"></textarea>
+    <mat-hint align="end">{{input.value?.length || 0}}/2000</mat-hint>
+  </mat-form-field>-->
+  </div>
+</div>
+      <div class="mt-2">
+        <button color="primary" mat-raised-button matStepperNext>Next</button>
+      </div>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+      <ng-template matStepLabel>Fill out specs of property</ng-template>
+      <mat-form-field hintLabel="Max 60 characters" class="example-full-width">
+      <input matInput #input maxlength="60" [(ngModel)]="property.title" placeholder="Title displayed in google">
+      <mat-hint align="end">{{input.value?.length || 0}}/60</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 155 characters" class="example-full-width">
+    <input matInput #input maxlength="155" [(ngModel)]="property.metadescription" placeholder="description displayed in google">
+    <mat-hint align="end">{{input.value?.length || 0}}/155</mat-hint>
+  </mat-form-field>
+     <mat-form-field>
+       <input matInput placeholder="Price" type="number"  class="example-right-align" [(ngModel)]="property.price">
+       <span matPrefix>&#8369;&nbsp;</span>
+     </mat-form-field>
+     <mat-form-field>
+       <input matInput placeholder="Max Price" type="number"  class="example-right-align" [(ngModel)]="property.maxPrice">
+       <span matPrefix>&#8369;&nbsp;</span>
+     </mat-form-field>
+     <table class="example-full-width" cellspacing="0"><tr>
+         <td><mat-form-field class="example-full-width">
+           <input matInput placeholder="Rooms" type="number" min="0" max="9" [(ngModel)]="property.rooms">
+         </mat-form-field></td>
+         <td><mat-form-field class="example-full-width">
+           <input matInput placeholder="Max Rooms" type="number" min="0" max="9" [(ngModel)]="property.maxRooms">
+         </mat-form-field></td>
+         <td><mat-form-field class="example-full-width">
+           <input matInput placeholder="Bath" type="number" min="0" max="9" [(ngModel)]="property.bath">
+         </mat-form-field></td>
+         <td><mat-form-field class="example-full-width">
+           <input matInput placeholder="SQM" type="number" min="0" max="100000" [(ngModel)]="property.sqm">
+         </mat-form-field></td>
+         <td><mat-form-field class="example-full-width">
+           <input matInput placeholder="Max SQM" type="number" min="0" max="100000" [(ngModel)]="property.maxSQM">
+         </mat-form-field></td>
+       </tr></table>
+     <div class="property_counts">
+       <mat-checkbox [(ngModel)]="property.swimming">Swimming Pool</mat-checkbox>
+       <mat-checkbox [(ngModel)]="property.gym">Gym</mat-checkbox>
+       <mat-checkbox [(ngModel)]="property.garage">Garage</mat-checkbox>
+       <mat-checkbox [(ngModel)]="property.court">Basketball Court</mat-checkbox>
+     </div>
+     <div class="example-container">
+   <mat-form-field style="width: 100%;">
+     <mat-select [compareWith]="compareFn" [(value)]="property.city" placeholder="Select City" [(ngModel)]="property.city">
+             <mat-option *ngFor="let city of cities" [value]="city">
+           {{city.citymunDesc}}
+       </mat-option>
+     </mat-select>
+   </mat-form-field>
+   <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="13">
+     <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+     (dragEnd)="onChoseLocation($event)"></agm-marker>
+   </agm-map>
+   </div>
+      <div>
+        <div class="mt-2">
+          <button color="warn" mat-raised-button matStepperPrevious>Back</button>
+          <button color="primary" mat-raised-button matStepperNext>Next</button>
+        </div>
+      </div>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+      <ng-template matStepLabel>Add Profile Image</ng-template>
+      <image-upload (change)="fileChangeEvent($event)" [style]="customStyle" [maxFileSize]="400000" [max]="1" [extensions]="['jpeg','png','jpg']" (removed)="onRemovedProfile($event)"
+      (uploadFinished)="onUploadProfileFinished($event)" buttonCaption="Add Profile Image (480px*320px)"
+     dropBoxMessage="Drag and Drop here"></image-upload>
+   <image-cropper
+       [imageChangedEvent]="imageChangedEvent"
+       [maintainAspectRatio]="true"
+       [aspectRatio]="4 / 3"
+       [resizeToWidth]="420"
+       format="png"
+       (imageCropped)="imageCropped($event)"
+       (imageLoaded)="imageLoaded()"
+       (loadImageFailed)="loadImageFailed()"
+   ></image-cropper>
+   <div class="mt-2">
+     <button color="warn" mat-raised-button matStepperPrevious>Back</button>
+     <button color="primary" mat-raised-button matStepperNext>Next</button>
+   </div>
+  </mat-step>
+  <mat-step [stepControl]="fourthFormGroup">
+        <ng-template matStepLabel>Additional Images</ng-template>
+       <image-upload (change)="fileChangeEventAdditional($event)" [style]="customStyle" [maxFileSize]="500000" [max]="20" [extensions]="['jpeg','png','jpg']" (removed)="onRemoved($event)"
+       (uploadFinished)="onUploadFinished($event)" buttonCaption="Additional images (520px*400px)"
+      dropBoxMessage="Drag and Drop here"></image-upload>
+     <image-cropper
+         [imageChangedEvent]="imageChangedEventAddImage"
+         [maintainAspectRatio]="true"
+         [aspectRatio]="4 / 3"
+         [resizeToWidth]="520"
+         format="png"
+         (imageCropped)="imageCroppedAdditional($event)"
+         (imageLoaded)="imageLoaded()"
+         (loadImageFailed)="loadImageFailed()"
+     ></image-cropper>
+   <div class="mt-2">
+     <button color="warn" mat-raised-button matStepperPrevious>Back</button>
+     <button color="primary" (click)="nextAdditionalImage()" mat-raised-button matStepperNext>Next</button>
+   </div>
+  </mat-step>
+  <mat-step [stepControl]="fifthFormGroup">
+      <ng-template matStepLabel>Add Youtube Video (Optional)</ng-template>
+      <input matInput #input maxlength="200" placeholder="youtube URL" [(ngModel)]="property.youtubelink">
+   <div class="mt-2">
+     <button color="warn" mat-raised-button matStepperPrevious>Back</button>
+     <button color="primary" mat-raised-button matStepperNext>Next</button>
+   </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Last Step</ng-template>
+      <button class="save mt-2 mb-2 ml-2 mr-2" *ngIf="!saving" mat-raised-button (click)="onSave()">Save Property</button>
+      <mat-progress-bar mode="indeterminate" *ngIf="saving"></mat-progress-bar>
+    <div>
+      <button color="warn" mat-raised-button matStepperPrevious *ngIf="!saving">Back</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

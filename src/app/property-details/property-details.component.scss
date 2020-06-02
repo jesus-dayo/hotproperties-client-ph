@@ -1,0 +1,325 @@
+.example-card {
+  max-width: 1200px;
+  margin-top:20px;
+}
+
+/deep/ .displayinline{
+      display: inline !important;
+      width:90% !important;
+      margin: 2px 2px 2px 2px !important;
+}
+
+/deep/ .spacebetween {
+     display: flex;
+     justify-content: space-between;
+}
+
+/deep/ .room {
+    background-color: #360a3db0 !important;
+    color: #fff !important;
+}
+
+/deep/ .bath {
+    background-color: #0a3d3db0 !important;
+    color: #fff !important;
+}
+
+/deep/ .garage {
+    background-color: #bb0707b0 !important;
+    color: #fff !important;
+}
+
+/deep/ .swimming {
+    background-color: #1c07bbb0 !important;
+    color: #fff !important;
+}
+
+/deep/ .gym {
+    background-color: #000000b0 !important;
+    color: #fff !important;
+}
+
+/deep/ .court {
+    background-color: #4e411db0 !important;
+    color: #fff !important;
+}
+
+/deep/ .sqm {
+    background-color: #145211b0 !important;
+    color: #fff !important;
+}
+
+@media (min-width: 300px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 305px;
+  	width: 100%;
+  }
+  .propertyDescription{
+    font-size: 11px;
+    color: #212529;
+  }
+  .propname{
+    font-size:5vw;
+  }
+  .locationcity{
+    font-size:5vw;
+  }
+  h2{
+    font-size:20px !important;
+  }
+  /deep/ .video{
+        left: 0;
+        width: 100%;
+        height: 300px;
+  }
+ }
+@media (min-width: 576px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 305px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 290px;
+  }
+  .cardFooterHeight{
+    height: 40px;
+    font-size: 9px;
+  }
+  .propertyDescription{
+    font-size: 12px;
+    color: #212529;
+  }
+  .propname{
+    font-size:4vw;
+  }
+  .locationcity{
+    font-size:4vw;
+  }
+  h2{
+    font-size:20px !important;
+  }
+  /deep/ .video{
+        left: 0;
+        width: 100%;
+        height: 300px;
+  }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 305px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 100%;
+  }
+  .cardFooterHeight{
+    height: 45px;
+    font-size: 9px;
+  }
+  .propertyDescription{
+    font-size: 13px;
+    color: #212529;
+  }
+  .propname{
+    font-size:3vw;
+  }
+  .locationcity{
+    font-size:3vw;
+  }
+  h2{
+    font-size:20px !important;
+  }
+  /deep/ .video{
+      position: absolute;
+      // top: 0;
+      left: 0;
+      width: 90%;
+      height: 90%;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 355px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 100%;
+  }
+  .cardFooterHeight{
+    height: 50px;
+    font-size: 10px;
+  }
+  .propertyDescription{
+    font-size: 14px;
+    color: #212529;
+  }
+  .propname{
+    font-size:3vw;
+  }
+  .locationcity{
+    font-size:3vw;
+  }
+  /deep/ .video{
+      position: absolute;
+      // top: 0;
+      left: 0;
+      width: 90%;
+      height: 90%;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  mat-drawer {
+    height: 400px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 350px;
+  }
+  agm-map{
+  	height: 405px;
+  	width: 100%;
+  }
+  .youtube iframe{
+    height: 300px;
+    width: 100%;
+  }
+  .cardFooterHeight{
+    height: 50px;
+    font-size: 10px;
+  }
+  .propertyDescription{
+    font-size: 14px;
+    color: #212529;
+  }
+  .propname{
+    font-size:2vw;
+  }
+  .locationcity{
+    font-size:2vw;
+  }
+  /deep/ .video{
+      position: absolute;
+      // top: 0;
+      left: 0;
+      width: 90%;
+      height: 90%;
+  }
+}
+
+mat-drawer-content {
+	background-color: #e1e9f800;
+}
+
+.mat-card-content{
+  padding-bottom: 3px;
+}
+
+#toggleInquiry{
+	position: fixed;
+    right: 0px;
+    top: 250px;
+    z-index: 2;
+}
+
+#map-container{
+  height: 100%;
+}
+
+agm-map{
+	//height: 100%;
+	width: 100%;
+}
+
+.card-list .badge-success {
+    left: 20px;
+    padding: 7px 10px;
+    position: absolute;
+    top: 20px;
+    z-index: 9;
+}
+
+.card-list .badge-info {
+    right: 20px;
+    padding: 7px 10px;
+    position: absolute;
+    top: 20px;
+    z-index: 9;
+}
+
+.card-list .card-body .card-title {
+    font-size: 15px;
+    height:30px;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #34495e;
+}
+
+.card-list .card-body .card-subtitle {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.card-footer {
+    background: #fff none repeat scroll 0 0;
+    border-color: #eeeeee;
+    padding: 0 0 0 0;
+    font-size: 12px;
+}
+
+.card-list .card-footer span {
+    margin: 0 16px 0 0;
+}
+
+.badge {
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+
+
+.card-transparent{
+  background: none;
+}
+
+.cardFooterHeight{
+  height:50px;
+}

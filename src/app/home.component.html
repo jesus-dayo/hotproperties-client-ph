@@ -1,0 +1,231 @@
+<section id="searchProperty" class="container-fluid mat-typography">
+<div class="overlay"></div>
+<div class="container">
+<div class="row">
+<mat-card class="col-md-12 mat-elevation-z mt-5 card-transparent">
+		<div class="row" >
+		 <mat-card class="col-md-6" style="background-color: rgba(0, 0, 0, .5);">
+			<h3 style="margin-left:5px;font-size:30px;" class="glow mat-h3">FIND YOUR HOME.</h3>
+			<h3 style="margin-left:5px;font-size:30px;" class="glow mb-4 mat-h3">WE ARE HERE TO HELP.</h3>
+			<mat-form-field>
+			<mat-icon matPrefix>home</mat-icon>
+			<mat-select placeholder="Select Property Type" [(ngModel)]="selectedPropertyType">
+	      <mat-option *ngFor="let ptype of propertyType" [value]="ptype">
+	      		{{ptype.label}}
+	    	</mat-option>
+	    </mat-select>
+		  </mat-form-field>
+			<mat-form-field>
+			<mat-icon matPrefix>location_on</mat-icon>
+			<mat-select placeholder="Select Location" [(ngModel)]="selectedCity">
+				<mat-option *ngFor="let city of cities" [value]="city">
+						{{city.label}}
+				</mat-option>
+			</mat-select>
+			</mat-form-field>
+			<a (click)="search()">
+			<mat-icon class="md-48" style="cursor:pointer;" svgIcon="search" (click)="search()" color="primary"></mat-icon>
+		  </a>
+		 </mat-card>
+		</div>
+</mat-card>
+</div>
+</div>
+</section>
+<section class="container-fluid mat-typography" style="height: 100%;">
+	<div class="row">
+			<div class="col-xl-10 mx-auto text-center mt-4">
+				<h2 class="mb-4 darkglow mat-h3">Featured Properties</h2>
+			</div>
+	</div>
+	<ngx-carousel class="banner" [inputs]="carouselTileOne">
+		<ngx-tile NgxCarouselItem *ngFor="let prop of featuredproperties"
+		   style="cursor:pointer;">
+			 <a routerLink="/for-sale/{{prop?.propertyType.name | slugify}}/{{prop?.city.citymunDesc | slugify}}/{{prop?.propertyName | slugify}}/{{prop?.propertyId}}">
+	                   <div class="card card-list cardhover6">
+	                         <span class="badge badge-success">For Sale</span>
+	                         <img class="card-img-top" style="width: 100%;height: 220px;"  [src]="prop?.profileImage?.image"
+													 alt="For sale condo,house and lot - {{prop?.propertyName}}">
+	                         <div class="card-body" style="height:150px;">
+	                            <h5 class="card-title glow" style="color: #6c757d;">{{prop?.propertyName}}</h5>
+	                            <h6 class="card-subtitle mb-2 text-muted"><mat-icon matPrefix>location_on</mat-icon> {{prop?.city.citymunDesc}}</h6>
+	                            <h4 class="text-success mb-0 mt-0">
+	                            {{prop?.price | currency:'&#8369;'}}</h4>
+	                         </div>
+	                         <div class="card-footer" style="color:#aaaaaa;font-size:12px;">
+	                            <span><i class="mdi mdi-sofa"></i> Beds : <strong>{{prop?.rooms}}</strong></span>
+	                            <span><i class="mdi mdi-scale-bathroom"></i> Baths : <strong>{{prop?.bath}}</strong></span>
+	                            <span><i class="mdi mdi-move-resize-variant"></i> Area : <strong>{{prop?.sqm}} sq</strong></span>
+	                         </div>
+	                   </div>
+				</a>
+		</ngx-tile>
+		<button NgxCarouselPrev class="leftRs" [hidden]="true"></button>
+		<button NgxCarouselNext class="rightRs" [hidden]="true"></button>
+</ngx-carousel>
+</section>
+<section id="newDevelopment" class="text-white container-fluid mat-typography">
+<div class="container">
+<div class="row">
+<mat-card class="col-md-12 mat-elevation-z card-transparent mt-4">
+	<div class="container bg-transparent-blue">
+		<div class="row">
+				<div class="col-xl-12 mx-auto text-center">
+					<h2 class="mb-4 glow mat-h3">Where to Invest</h2>
+				</div>
+		</div>
+	<div class="row">
+		<ngx-carousel class="col-md-12 py-3 banner" [inputs]="carouselTileTwo">
+			<ngx-tile  NgxCarouselItem *ngFor="let devprop of newdevproperties">
+				 <a routerLink="/pre-sale/{{devprop.propertyType.name | slugify}}/{{devprop?.city.citymunDesc | slugify}}/{{devprop?.propertyName | slugify}}/{{devprop?.propertyId}}">
+				<div class="card card-image mb-3 cardhover6" style="cursor:pointer;">
+				 <img class="card-img-top newDevImage"
+						 [src]="devprop?.profileImage?.image"
+						 alt="For sale condo,house and lot - {{devprop?.propertyName}}">
+				 <div
+					 class="text-white text-center d-flex align-items-center rgba-indigo-strong py-3 px-4">
+					 <div style="width: 100%;">
+						 <h6 class="orange-text">
+							 <i class="fa fa-map-marker"></i> {{devprop?.city.citymunDesc}}
+						 </h6>
+						 <h4 class="card-title pt-2 glow" style="font-size:20px !important;">
+							 <strong>{{devprop?.propertyName | limitTo: 30}}</strong>
+						 </h4>
+					 </div>
+				 </div>
+			 </div>
+		 </a>
+			</ngx-tile>
+			<button NgxCarouselPrev class="leftRs" [hidden]="true"></button>
+			<button NgxCarouselNext class="rightRs" [hidden]="true"></button>
+	</ngx-carousel>
+
+		<!-- Wrapper for slides -->
+		<!--<div class="col-md-4 py-3" *ngFor="let devprop of newdevproperties">
+			<div class="card card-image mb-3 cardhover8" style="cursor:pointer;" (click)="viewDev(devprop?.propertyId)">
+				<img class="card-img-top newDevImage"
+						[src]="devprop?.profileImage.image"
+						[alt]="devprop?.name">
+				<div
+					class="text-white text-center d-flex align-items-center rgba-indigo-strong py-3 px-4">
+					<div style="width: 100%;">
+						<h6 class="orange-text">
+							<i class="fa fa-map-marker"></i> {{devprop?.city.citymunDesc}}
+						</h6>
+						<h4 class="card-title pt-2 glow" style="font-size:20px !important;">
+							<strong>{{devprop?.propertyName | limitTo: 30}}</strong>
+						</h4>
+						<!--<p class="description">{{devprop?.description | limitTo: 50}}</p>-->
+					<!--</div>
+				</div>
+			</div>
+		</div>-->
+	</div>
+</div>
+</mat-card>
+</div>
+</div>
+</section>
+<section class="text-white container-fluid mat-typography" style="display: none;">
+<div class="row">
+	<div class="col-xl-12 mx-auto text-center mt-5">
+		<button type="button" (click)="openLink('https://www.facebook.com/PhilippineHotProperties')" class="btn btn-fb waves-light" style="background: blue;color: white;" mdbWavesEffect><i class="fa fa-facebook left"></i>Facebook</button>
+		<button type="button" (click)="openLink('https://plus.google.com/113451765615078515549')" class="btn btn-gplus waves-light" mdbWavesEffect style="background:#dd4b39;color: white;"><i class="fa fa-google-plus left"></i>Google +</button>
+		<button type="button" (click)="openLink('https://www.instagram.com/philippinehotproperties')" class="btn btn-ins waves-light" mdbWavesEffect style="background:#c61118;color: white;"><i class="fa fa-instagram left"></i>Instagram</button>
+	</div>
+</div>
+	<div class="container mt-3">
+		<div class="row">
+			<mat-card class="col-md-5 mb-5 ">
+						<ngx-twitter-timeline
+	[data]="{sourceType: 'url', url: 'https://twitter.com/HotPropertiesP1'}"
+	[opts]="{tweetLimit: 5}"
+></ngx-twitter-timeline>
+			</mat-card>
+			<div class="col-md-2 mb-5"></div>
+			<div class="col-md-5 mb-5 mat-card" style="background:#a8abff;">
+				<!-- contact form -->
+<form [formGroup]="contactForm" class="pl-2 pt-2 pr-2 pb-2" style="background:#a8abff;color: white;">
+<p class="h5 mt-1">Ask Your Broker - <i class="fa fa-phone prefix grey-text" style="font-size: 20px;color: orange;"></i>
+	<span style="color: #fff;font-weight: 600;font-size: 16px;text-shadow: 0 0 15px #999;">+63 9158350512</span></p>
+
+<div class="md-form mt-2 mb-2">
+	<i class="fa fa-user prefix grey-text" style="font-size: 20px;"></i>
+	<input type="text" placeholder="Your name" [(ngModel)]="inquiry.name"
+	id="contactFormName" formControlName="contactFormName" class="form-control displayinline" mdbInputDirective>
+</div>
+
+<div class="md-form mt-2 mb-2">
+	<i class="fa fa-envelope prefix grey-text" style="font-size: 16px;"></i>
+	<input type="email" placeholder="Your email" [(ngModel)]="inquiry.email"
+	id="contactFormEmail" formControlName="contactFormEmail" class="form-control displayinline" mdbInputDirective>
+</div>
+
+<div class="md-form mt-2 mb-2">
+	<i class="fa fa-phone prefix grey-text" style="font-size: 20px;"></i>
+	<input type="text" placeholder="Phone Number" id="contactFormSubject" [(ngModel)]="inquiry.phone"
+	formControlName="contactFormSubject" class="form-control displayinline" mdbInputDirective>
+</div>
+
+<div class="md-form mt-2 mb-2">
+	<i class="fa fa-pencil prefix grey-text" style="font-size: 20px;"></i>
+	<textarea type="text" placeholder="Message broker and schedule viewing" [(ngModel)]="inquiry.message"
+	id="contactFormMessage" formControlName="contactFormMessage" class="md-textarea displayinline"
+	style="height: 100px;color:#fff;"
+	mdbInputDirective></textarea>
+</div>
+
+<div class="text-center mt-2 mb-2">
+	<mat-progress-spinner
+	style="margin: 10px auto;"
+	mode="indeterminate"
+	diameter="50"
+	[color]="warn"
+	*ngIf="inquiryProgress"></mat-progress-spinner>
+	<button *ngIf="!inquiryProgress" class="btn btn-success waves-light mb-1" (click)="inquire()" mdbWavesEffect>Send
+		<i class="fa fa-paper-plane-o ml-1"></i>
+	</button>
+</div>
+</form>
+<!-- contact form -->
+
+			<!--	<div class="flex-container mt-3">
+			<mat-card>
+		  <mat-card-content>
+		  	<input type="text" placeholder="Name" value="">
+		  	 <input type="email" placeholder="Email" value="">
+		  	 <input type="tel" matInput placeholder="Telephone" value="" style="margin-bottom: 20px;">
+		    <textarea matInput #input matTextareaAutosize matAutosizeMinRows="2"
+		            matAutosizeMaxRows="10" placeholder="Enter Message to Broker"></textarea>
+		  </mat-card-content>
+		  <mat-card-actions>
+					<button type="button" class="btn btn-fb waves-light" style="background: green;" mdbWavesEffect><i class="fa fa-info-circle left"></i>&nbsp;Send Inquiry</button>
+ 			</mat-card-actions>
+		</mat-card>
+		<div class="row mt-3"></div>
+	</div>-->
+		</div>
+		</div>
+	</div>
+</section>
+<!-- Footer -->
+    <footer class="footer" style="background-color: #0e0f13 !important;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 h-100 text-center text-lg-left my-auto">
+            <p class="text-center text-white medium mb-1 mb-lg-0">&copy; Streamrock Realty Corporation 2018. All Rights Reserved.</p>
+			<p class="text-center">
+				<a href="#" (click)="openLink('https://www.facebook.com/PhilippineHotProperties')" >
+					<i class="fa fa-facebook-square" style="font-size:36px; color:white;"></i>
+				</a>
+				<a href="#" (click)="openLink('https://twitter.com/HotPropertiesP1')" >
+					<i class="fa fa-twitter-square" style="font-size:36px; color:white;"></i>
+				</a>
+				<a href="#" (click)="openLink('https://www.instagram.com/philippinehotproperties')" >
+					<i class="fa fa-instagram" style="font-size:36px; color:white;"></i>
+				</a>
+			</p>
+          </div>
+        </div>
+      </div>
+    </footer>

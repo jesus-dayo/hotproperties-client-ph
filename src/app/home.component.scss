@@ -1,0 +1,325 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$link-hover-decoration: none;    // remove underline from button links
+
+$link-color: #3f51b5;            // set link color based on the used material theme
+$link-hover-color: currentColor;
+
+/*
+/deep/ iframe .timeline-Viewport{
+     overflow-x: hidden;
+    overflow-y: scroll !important;
+      max-height: 200px !important;
+}*/
+
+/*
+/deep/ #twitter-widget-0 {max-height:100% !important;}
+/deep/ #twitter-widget-0 #document  {height:100px !important;}
+*/
+/deep/ .displayinline{
+      display: inline !important;
+      width:90% !important;
+      margin: 2px 2px 2px 2px !important;
+}
+
+/deep/ .flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/deep/ .card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+
+/deep/ .card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: .25rem;
+    border: medium none;
+    box-shadow: 0 0 11px #daebff;
+    margin-bottom: 18px;
+}
+
+/deep/ img {
+    transform-style: preserve-3d;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.card-list .badge {
+    left: 20px;
+    padding: 7px 10px;
+    position: absolute;
+    top: 20px;
+    z-index: 9;
+}
+
+.card-list .card-body .card-title {
+    font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #34495e;
+}
+
+.card-list .card-body .card-subtitle {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.text-success {
+    color: #64ddba !important;
+}
+
+.card-footer {
+    background: #fff none repeat scroll 0 0;
+    border-color: #eeeeee;
+}
+
+.card-list .card-footer span {
+    margin: 0 16px 0 0;
+}
+
+.badge {
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+
+
+.card-transparent{
+  background: none;
+}
+
+/deep/ .green-icon {
+    color: green;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+/deep/ .green-icon svg {
+    fill: green;
+}
+
+/deep/ .mat-icon.md-18 {
+font-size: 18px !important;
+height: 18px !important;
+width: 18px !important;
+}
+/deep/ .mat-icon.md-24 {
+font-size: 24px !important;
+height: 24px !important;
+width: 24px !important;
+}
+/deep/ .mat-icon.md-36 {
+font-size: 36px !important;
+height: 36px !important;
+width: 36px !important;
+}
+/deep/ .mat-icon.md-48 {
+font-size: 48px !important;
+height: 48px !important;
+width: 48px !important;
+}
+
+/deep/ .material-icons.md-18 {
+font-size: 18px !important;
+height: 18px !important;
+width: 18px !important;
+}
+/deep/ .material-icons.md-24 {
+font-size: 24px !important;
+height: 24px !important;
+width: 24px !important;
+}
+/deep/ .material-icons.md-36 {
+font-size: 36px !important;
+height: 36px !important;
+width: 36px !important;
+}
+/deep/ .material-icons.md-48 {
+font-size: 48px !important;
+height: 48px !important;
+width: 48px !important;
+}
+
+// small devices (phone)
+@media (min-width: 320px) {
+    /deep/ #searchProperty {
+      background: url("../assets/static/s02.png") no-repeat center center fixed;
+    }
+
+    /deep/ #newDevelopment{
+      background: url("../assets/static/s08.png") no-repeat center center fixed;
+    }
+
+    /deep/ .newDevImage {
+      width: auto;
+      height: 200px;
+    }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    /deep/ #searchProperty {
+      background: url("../assets/static/s02.png") no-repeat center center fixed;
+    }
+
+    /deep/ #newDevelopment{
+      background: url("../assets/static/s08.png") no-repeat center center fixed;
+    }
+
+    /deep/ .newDevImage {
+      width: auto;
+      height: 200px;
+    }
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  /deep/ #searchProperty {
+    background: url("../assets/static/s02.png") no-repeat center center fixed;
+  }
+
+  /deep/ #newDevelopment{
+    background: url("../assets/static/s08.png") no-repeat center center fixed;
+  }
+
+  /deep/ .newDevImage {
+    width: auto;
+    height: 200px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  /deep/ #searchProperty {
+    background: url("../assets/static/s02.png") no-repeat center center fixed;
+  }
+
+  /deep/ #newDevelopment{
+    background: url("../assets/static/s08.png") no-repeat center center fixed;
+  }
+
+  /deep/ .newDevImage {
+    width: auto;
+    height: 300px;
+  }
+}
+
+/deep/ .cardhover6:hover{
+  opacity: 0.6;
+}
+
+/deep/ .cardhover8:hover{
+  opacity: 0.8;
+}
+
+/deep/ #searchProperty{
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/deep/ #newDevelopment{
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/deep/ .mat-input-flex{
+  background: white;
+}
+
+/deep/ .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/deep/ .mat-card-header-text {
+    width: 100%;
+    text-align: center;
+}
+
+/deep/ .app-spacer {
+  flex: 1 1 auto;
+}
+
+/deep/ .orange-text {
+    color: #ff9800!important;
+}
+
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+}
+
+/deep/ .rgba-indigo-strong {
+    background-color: rgba(63,81,181,.7)!important;
+}
+
+/deep/ .standardIcon {
+    &mat-icon {
+      @include md-icon-size(32px);
+    }
+}
+
+@media (min-width: 576px) {
+  .container-fluid{
+    min-height: 500px;
+  }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .container-fluid{
+    min-height: 500px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .container-fluid{
+    min-height: 500px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .container-fluid{
+    min-height: 500px;
+  }
+}
