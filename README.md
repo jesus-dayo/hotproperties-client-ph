@@ -14,6 +14,12 @@ Spring Boot -> Hot Properties Service
 
 AWS S3, EC2, RDS, Cloudfront
 
+## Screenshots of the UI
+![Image 1](https://github.com/jesus-dayo/hotproperties-client-ph/blob/master/src/assets/img/1st.PNG)
+![Image 2](https://github.com/jesus-dayo/hotproperties-client-ph/blob/master/src/assets/img/2nd.PNG)
+![Image 2](https://github.com/jesus-dayo/hotproperties-client-ph/blob/master/src/assets/img/3rd.PNG)
+![Image 2](https://github.com/jesus-dayo/hotproperties-client-ph/blob/master/src/assets/img/4th.PNG)
+![Image 2](https://github.com/jesus-dayo/hotproperties-client-ph/blob/master/src/assets/img/5th.PNG)
 ## Authors
 
 * **Jesus Emmanuel Dayo**
